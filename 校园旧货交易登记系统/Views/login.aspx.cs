@@ -28,16 +28,14 @@ namespace 校园旧货交易登记系统.Views
         {
             string username = tbusername.Text.Trim();
             string pwd = tbpsw.Text.Trim();
-            string SelectSQL = "select user_password from sys_user where user_name=username";
-            //DataTable dt = new DataTable();
-            //dt = dbCLib.getDT(SelectSQL);
             var info = net.sys_user.FirstOrDefault();
             info = net.sys_user.Where(o => o.user_name == username).FirstOrDefault();
             if (info.user_passwod==pwd)
             {
                 Response.Redirect("register.aspx?", false);
             }
-
+            else
+                Response.Write(@"<script>alert('用户名或者密码错误!');</script>");
         }
     }
 }
