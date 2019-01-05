@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="base_goods">
+          <Key>
+            <PropertyRef Name="goods_id" />
+          </Key>
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="goods_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="goods_status" Type="int" Nullable="false" />
+          <Property Name="goods_price" Type="float" Nullable="false" />
+          <Property Name="goods_time" Type="date" Nullable="false" />
+          <Property Name="is_change" Type="int" Nullable="false" />
+          <Property Name="change_goods_name" Type="varchar" MaxLength="255" />
+          <Property Name="is_delete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="base_order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="order_time" Type="date" Nullable="false" />
+          <Property Name="sender" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="receiver" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_passwod" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="user_tele" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="user_address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_sex" Type="int" Nullable="false" />
+          <Property Name="is_delete" Type="int" />
+        </EntityType>
+        <Association Name="FK_base_goods_sys_user">
+          <End Role="sys_user" Type="Self.sys_user" Multiplicity="1" />
+          <End Role="base_goods" Type="Self.base_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="base_goods">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_base_order_base_order">
+          <End Role="base_goods" Type="Self.base_goods" Multiplicity="1" />
+          <End Role="base_order" Type="Self.base_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="base_goods">
+              <PropertyRef Name="goods_id" />
+            </Principal>
+            <Dependent Role="base_order">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NetModelStoreContainer">
+          <EntitySet Name="base_goods" EntityType="Self.base_goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="base_order" EntityType="Self.base_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_user" EntityType="Self.sys_user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_base_goods_sys_user" Association="Self.FK_base_goods_sys_user">
+            <End Role="sys_user" EntitySet="sys_user" />
+            <End Role="base_goods" EntitySet="base_goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_base_order_base_order" Association="Self.FK_base_order_base_order">
+            <End Role="base_goods" EntitySet="base_goods" />
+            <End Role="base_order" EntitySet="base_order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="base_goods">
+          <Key>
+            <PropertyRef Name="goods_id" />
+          </Key>
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_status" Type="Int32" Nullable="false" />
+          <Property Name="goods_price" Type="Double" Nullable="false" />
+          <Property Name="goods_time" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="is_change" Type="Int32" Nullable="false" />
+          <Property Name="change_goods_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_delete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sys_user" Relationship="Self.FK_base_goods_sys_user" FromRole="base_goods" ToRole="sys_user" />
+          <NavigationProperty Name="base_order" Relationship="Self.FK_base_order_base_order" FromRole="base_goods" ToRole="base_order" />
+        </EntityType>
+        <EntityType Name="base_order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="order_time" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="receiver" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="base_goods" Relationship="Self.FK_base_order_base_order" FromRole="base_order" ToRole="base_goods" />
+        </EntityType>
+        <EntityType Name="sys_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_passwod" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_tele" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_sex" Type="Int32" Nullable="false" />
+          <Property Name="is_delete" Type="Int32" />
+          <NavigationProperty Name="base_goods" Relationship="Self.FK_base_goods_sys_user" FromRole="sys_user" ToRole="base_goods" />
+        </EntityType>
+        <Association Name="FK_base_goods_sys_user">
+          <End Role="sys_user" Type="Self.sys_user" Multiplicity="1" />
+          <End Role="base_goods" Type="Self.base_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="base_goods">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_base_order_base_order">
+          <End Role="base_goods" Type="Self.base_goods" Multiplicity="1" />
+          <End Role="base_order" Type="Self.base_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="base_goods">
+              <PropertyRef Name="goods_id" />
+            </Principal>
+            <Dependent Role="base_order">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="base_goods" EntityType="Self.base_goods" />
+          <EntitySet Name="base_order" EntityType="Self.base_order" />
+          <EntitySet Name="sys_user" EntityType="Self.sys_user" />
+          <AssociationSet Name="FK_base_goods_sys_user" Association="Self.FK_base_goods_sys_user">
+            <End Role="sys_user" EntitySet="sys_user" />
+            <End Role="base_goods" EntitySet="base_goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_base_order_base_order" Association="Self.FK_base_order_base_order">
+            <End Role="base_goods" EntitySet="base_goods" />
+            <End Role="base_order" EntitySet="base_order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NetModelStoreContainer" CdmEntityContainer="NetEntities">
+          <EntitySetMapping Name="base_goods">
+            <EntityTypeMapping TypeName="NetModel.base_goods">
+              <MappingFragment StoreEntitySet="base_goods">
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="goods_name" ColumnName="goods_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="goods_status" ColumnName="goods_status" />
+                <ScalarProperty Name="goods_price" ColumnName="goods_price" />
+                <ScalarProperty Name="goods_time" ColumnName="goods_time" />
+                <ScalarProperty Name="is_change" ColumnName="is_change" />
+                <ScalarProperty Name="change_goods_name" ColumnName="change_goods_name" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="base_order">
+            <EntityTypeMapping TypeName="NetModel.base_order">
+              <MappingFragment StoreEntitySet="base_order">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="order_time" ColumnName="order_time" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_user">
+            <EntityTypeMapping TypeName="NetModel.sys_user">
+              <MappingFragment StoreEntitySet="sys_user">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_passwod" ColumnName="user_passwod" />
+                <ScalarProperty Name="user_tele" ColumnName="user_tele" />
+                <ScalarProperty Name="user_address" ColumnName="user_address" />
+                <ScalarProperty Name="user_sex" ColumnName="user_sex" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
