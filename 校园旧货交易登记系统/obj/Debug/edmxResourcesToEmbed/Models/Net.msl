@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NetModelStoreContainer" CdmEntityContainer="NetEntities">
+    <EntitySetMapping Name="base_goods">
+      <EntityTypeMapping TypeName="NetModel.base_goods">
+        <MappingFragment StoreEntitySet="base_goods">
+          <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+          <ScalarProperty Name="goods_name" ColumnName="goods_name" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="goods_status" ColumnName="goods_status" />
+          <ScalarProperty Name="goods_price" ColumnName="goods_price" />
+          <ScalarProperty Name="goods_time" ColumnName="goods_time" />
+          <ScalarProperty Name="is_change" ColumnName="is_change" />
+          <ScalarProperty Name="change_goods_name" ColumnName="change_goods_name" />
+          <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="base_order">
+      <EntityTypeMapping TypeName="NetModel.base_order">
+        <MappingFragment StoreEntitySet="base_order">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+          <ScalarProperty Name="order_time" ColumnName="order_time" />
+          <ScalarProperty Name="sender" ColumnName="sender" />
+          <ScalarProperty Name="receiver" ColumnName="receiver" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_user">
+      <EntityTypeMapping TypeName="NetModel.sys_user">
+        <MappingFragment StoreEntitySet="sys_user">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_passwod" ColumnName="user_passwod" />
+          <ScalarProperty Name="user_tele" ColumnName="user_tele" />
+          <ScalarProperty Name="user_address" ColumnName="user_address" />
+          <ScalarProperty Name="user_sex" ColumnName="user_sex" />
+          <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
