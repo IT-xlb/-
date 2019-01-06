@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="goods_id" />
     </Key>
-    <Property Name="goods_id" Type="Int32" Nullable="false" />
+    <Property Name="goods_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="goods_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <Property Name="goods_status" Type="Int32" Nullable="false" />
@@ -20,7 +20,7 @@
     <Key>
       <PropertyRef Name="order_id" />
     </Key>
-    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="goods_id" Type="Int32" Nullable="false" />
     <Property Name="order_time" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="sender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
@@ -31,12 +31,12 @@
     <Key>
       <PropertyRef Name="user_id" />
     </Key>
-    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="user_passwod" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="user_tele" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="user_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="user_sex" Type="Int32" Nullable="false" />
+    <Property Name="user_sex" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="is_delete" Type="Int32" />
     <NavigationProperty Name="base_goods" Relationship="Self.FK_base_goods_sys_user" FromRole="sys_user" ToRole="base_goods" />
   </EntityType>
@@ -64,7 +64,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="NetEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="NetEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="base_goods" EntityType="Self.base_goods" />
     <EntitySet Name="base_order" EntityType="Self.base_order" />
     <EntitySet Name="sys_user" EntityType="Self.sys_user" />

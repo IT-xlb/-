@@ -200,51 +200,7 @@ public class DBCommLIb
             return "";
         }
     }
-
-    /* 功能：传入SQL语句，调用Command方法，执行SQL命令。
-     * 传入参数：SQL语句；参数列表：参数名与参数值
-     * 返回数据：执行SQL语句（增、删、改等所有修改数据库的操作）
-     * */
-    public string updateRecordWithSQL(string Ls_SqlCmd, string[,] paras)
-    {
-        //调用连接对象创建方法创建连接对象
-        //SqlConnection conn = getSqlConn();
-        //创建Command对象，为传递SQL命令做准备
-        SqlCommand sqlComm = new SqlCommand();
-        //把连接对象赋值给Command的Connection属性，建立Command与Connection对象的绑定
-        sqlComm.Connection = getSqlConn();
-        //指定Command的命令类型的是SQL语句
-        sqlComm.CommandType = CommandType.Text;
-        //SQL命令赋值给Command
-        sqlComm.CommandText = Ls_SqlCmd;
-        //如果没有参数，则参数数组的[0,0]值为-1；如果有参数，则[*,0]为参数名，[*,1]为参数值
-        if (paras.Length > 1 && paras[0, 0] != "-1")
-        {
-            for (int i = 0; i < paras.Length / 2; i++)
-            {
-                if (paras[i, 0] != "-1")
-                {
-                    sqlComm.Parameters.AddWithValue(paras[i, 0], paras[i, 1]);
-                }
-            }
-        }
-        try
-        {
-            //判断连接对象是否打开，如果未打开，打开之
-            if (sqlComm.Connection.State == ConnectionState.Closed)
-                sqlComm.Connection.Open();
-            //执行SQL命令（增删改等）
-            sqlComm.ExecuteNonQuery();
-            //关闭连接
-            sqlComm.Connection.Close();
-            return "操作完成！";
-        }
-        catch (Exception ex)
-        {
-            sqlComm.Connection.Close();
-            return ex.Message;
-        }
-    }
+  
     public DataTable getDT(string strSql)
     {
         try

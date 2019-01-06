@@ -13,10 +13,10 @@ namespace 校园旧货交易登记系统.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class NetEntities : DbContext
+    public partial class NetEntities1 : DbContext
     {
-        public NetEntities()
-            : base("name=NetEntities")
+        public NetEntities1()
+            : base("name=NetEntities1")
         {
         }
     

@@ -13,7 +13,7 @@ namespace 校园旧货交易登记系统.Views
     {
         CommLIb CLib = new CommLIb();
         DBCommLIb dbCLib = new DBCommLIb();
-        校园旧货交易登记系统.Models.NetEntities net= new Models.NetEntities();
+        校园旧货交易登记系统.Models.NetEntities1 net = new Models.NetEntities1();        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -30,9 +30,9 @@ namespace 校园旧货交易登记系统.Views
             string pwd = tbpsw.Text.Trim();
             var info = net.sys_user.FirstOrDefault();
             info = net.sys_user.Where(o => o.user_name == username).FirstOrDefault();
-            if (info.user_passwod==pwd)
+            if (info.user_password==pwd)
             {
-                Response.Redirect("register.aspx?", false);
+                Response.Redirect("main.aspx?", false);
             }
             else
                 Response.Write(@"<script>alert('用户名或者密码错误!');</script>");

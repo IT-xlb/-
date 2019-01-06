@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="NetModelStoreContainer" CdmEntityContainer="NetEntities">
+  <EntityContainerMapping StorageEntityContainer="NetModelStoreContainer" CdmEntityContainer="NetEntities1">
     <EntitySetMapping Name="base_goods">
       <EntityTypeMapping TypeName="NetModel.base_goods">
         <MappingFragment StoreEntitySet="base_goods">
@@ -32,7 +32,7 @@
         <MappingFragment StoreEntitySet="sys_user">
           <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="user_name" ColumnName="user_name" />
-          <ScalarProperty Name="user_passwod" ColumnName="user_passwod" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
           <ScalarProperty Name="user_tele" ColumnName="user_tele" />
           <ScalarProperty Name="user_address" ColumnName="user_address" />
           <ScalarProperty Name="user_sex" ColumnName="user_sex" />

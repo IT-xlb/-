@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -180,8 +181,8 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Models\Net.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Net.Context.cs</LastGenOutput>
       <DependentUpon>Net.edmx</DependentUpon>
+      <LastGenOutput>Net.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Net.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -219,8 +220,11 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\login.aspx" />
+    <Content Include="Views\main.aspx" />
     <Content Include="Views\register.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
     <Content Include="Views\web.config" />
@@ -306,6 +310,13 @@
     </Compile>
     <Compile Include="Views\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\main.aspx.cs">
+      <DependentUpon>main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\main.aspx.designer.cs">
+      <DependentUpon>main.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>

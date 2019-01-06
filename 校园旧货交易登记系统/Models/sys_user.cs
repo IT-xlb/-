@@ -22,10 +22,10 @@ namespace 校园旧货交易登记系统.Models
     
         public int user_id { get; set; }
         public string user_name { get; set; }
-        public string user_passwod { get; set; }
+        public string user_password { get; set; }
         public string user_tele { get; set; }
         public string user_address { get; set; }
-        public int user_sex { get; set; }
+        public string user_sex { get; set; }
         public Nullable<int> is_delete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

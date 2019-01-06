@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="goods_id" />
     </Key>
-    <Property Name="goods_id" Type="int" Nullable="false" />
+    <Property Name="goods_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="goods_name" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
     <Property Name="goods_status" Type="int" Nullable="false" />
@@ -18,7 +18,7 @@
     <Key>
       <PropertyRef Name="order_id" />
     </Key>
-    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="goods_id" Type="int" Nullable="false" />
     <Property Name="order_time" Type="date" Nullable="false" />
     <Property Name="sender" Type="varchar" MaxLength="255" Nullable="false" />
@@ -28,12 +28,12 @@
     <Key>
       <PropertyRef Name="user_id" />
     </Key>
-    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="user_name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="user_passwod" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="user_password" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="user_tele" Type="varchar" MaxLength="11" Nullable="false" />
     <Property Name="user_address" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="user_sex" Type="int" Nullable="false" />
+    <Property Name="user_sex" Type="nvarchar" MaxLength="2" Nullable="false" />
     <Property Name="is_delete" Type="int" />
   </EntityType>
   <Association Name="FK_base_goods_sys_user">
